@@ -1,10 +1,17 @@
+import React, { useState } from 'react';
+import Mypage from './Components/Mypage';
 import './App.css';
+import { BrowserRouter} from 'react-router-dom';
+import { NFTitems } from './Components/NFTList';
 
 function App() {
+  const [items, setItems] = useState(NFTitems.items);
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+        <div>
+          <Mypage items={items}/>
+        </div>
+    </BrowserRouter>
   );
 }
 
