@@ -99,9 +99,9 @@ networks: {
       chainId: 4,
       blockConfirmations: 6,
     },
-		// Add Ropsten Testnet
-		ropsten: {
-			URL: ROPSTEN_
+	// Add Ropsten Testnet
+	ropsten: {
+	URL: ROPSTEN_
 		}
   },
 ```
