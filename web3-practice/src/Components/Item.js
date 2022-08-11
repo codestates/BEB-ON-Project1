@@ -4,8 +4,8 @@ export default function Item({ item }) {
 
   return (
     <div key={item.id} className="item">
-      <img className="item-image" src={item.image} alt={item.name}></img>
-      <span className="item-name">{item.name}</span>
+      <img className="item-image" src={item.tokenURL} alt={item.tokenName}></img>
+      <span className="item-name">{item.tokenName}</span>
     </div>
   )
 }

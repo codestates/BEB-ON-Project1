@@ -1,8 +1,12 @@
 import './App.css';
-import {useState, useEffect} from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import Nav from './Components/Nav';
+import Home from './Components/Home';
+import Footer from './Components/Footer';
+import Explore from './Components/explore/Explore';
+import Mypage from './Components/Mypage';
 
+import {useState, useEffect} from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
     const [mainweb3, setMainweb3] = useState('');
@@ -29,7 +33,15 @@ function App() {
             setislogin={setIsLogin}
             login={isLogin}
         />
-        
+        <Routes>
+            <Route exact={true} path="/" 
+            element={<Home 
+            setmainaccount={setMainAccount}
+            setmainweb3={setMainweb3} />} />
+            <Route path="/explore" element={<Explore  />} />
+                      
+        </Routes>
+        <div><Footer /></div>
        </BrowserRouter>
     );
 
