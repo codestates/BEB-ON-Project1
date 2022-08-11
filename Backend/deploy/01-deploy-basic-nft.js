@@ -17,17 +17,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     waitConfirmations: 1,
   });
 
-  console.log("Getting Contract Address & ABI...");
-  const deployedContract = await ethers.getContract("BasicNft");
-  const contractAddress = deployedContract.address;
-  const contractAbi = deployedContract.interface.format(
-    ethers.utils.FormatTypes.json
-  );
-  console.log("Done!");
-  console.log("---------------------");
-
-  fs.readFile("../../web3-practice/tools/abi.json");
-
   //   if (
   //     !developmentChains.includes(network.name) &&
   //     process.env.ETHERSCAN_API_KEY
@@ -35,5 +24,3 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   //     await verify(nftMarketplace.address, args);
   //   }
 };
-
-module.exports.tags = ["all", "basicnft"];

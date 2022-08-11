@@ -22,5 +22,3 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   //   await verify(nftMarketplace.address, args);
   // }
 };
-
-module.exports.tags = ["all", "nftmarketplace"];
