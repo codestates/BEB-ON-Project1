@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import marketAbi from "../ABI/marketAbi"; // 임시로 저장해논 marketABI 가져옴, 추후 Hardhat으로 부터 가져올 예정!
-import {
-  getDatabase,
-  ref,
-  child,
-  update,
-  set,
-  onValue,
-} from "firebase/database";
+import nftAbi from '../ABI/TokenAbi';
+import { getDatabase, ref, child, update, set, onValue } from "firebase/database";
 
 function SellRegistration({ web3, account, nftAddr, tokenId }) {
   // 임시로 이미 배포된 MarketPlace Contract 사용, 나중에 Hardhat으로 가져올 예정!
@@ -28,20 +22,15 @@ function SellRegistration({ web3, account, nftAddr, tokenId }) {
     try {
       // price가 정수 인지 확인
       if (price % 1 == 0 && price !== null) {
-        const marketContract = new web3.eth.Contract(marketAbi, contractAddr, {
-          from: account,
-          to: contractAddr,
-          gasLimit: 3000000,
-        });
+        const nftContract = new web3.eth.Contract(nftAbi, nftAddr, {from: account, to: nftAddr, gasLimit: 3000000});
+        const approve = await nftContract.methods.approve(contractAddr, tokenId).send();
+        console.log(approve)
+        const marketContract = new web3.eth.Contract(marketAbi, contractAddr,{ from: account, to:contractAddr, gasLimit: 3000000});
         console.log(marketContract);
-        const listItem = await marketContract.methods
-          .listItem(nftAddr, tokenId, price)
-          .send();
+        const listItem = await marketContract.methods.listItem(nftAddr, tokenId, price).send();
         console.log(listItem);
-        window.alert(
-          `${nftAddr.slice(0, 6)}...가 ${price}wei로 판매 등록 완료 되었습니다.`
-        );
-        editTokenList = (tokenId, price, true); //firebase의 tokenlist 수정
+        window.alert(`${nftAddr.slice(0, 6)}...가 ${price}wei로 판매 등록 완료 되었습니다.`);
+        editTokenList(tokenId, price, true); //firebase의 tokenlist 수정
       } else {
         return window.alert("판매가를 확인하세요.");
       }
@@ -53,18 +42,12 @@ function SellRegistration({ web3, account, nftAddr, tokenId }) {
 
   const cancleRegister = async (nftAddr, tokenId) => {
     try {
-      const marketContract = new web3.eth.Contract(marketAbi, contractAddr, {
-        from: account,
-        to: contractAddr,
-        gasLimit: 3000000,
-      });
+      const marketContract = new web3.eth.Contract(marketAbi, contractAddr,{ from: account, to:contractAddr,  gasLimit: 3000000});
       console.log(marketContract);
-      const cancelListing = await marketContract.methods
-        .cancelListing(nftAddr, tokenId)
-        .send();
+      const cancelListing = await marketContract.methods.cancelListing(nftAddr, tokenId).send();
       console.log(cancelListing);
       window.alert("판매 등록 취소 되었습니다.");
-      editTokenList = (tokenId, 0, false); //firebase의 tokenlist 수정
+      editTokenList(tokenId, 0, false); //firebase의 tokenlist 수정
     } catch (e) {
       console.log(e);
       return e;
