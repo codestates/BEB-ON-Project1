@@ -2,6 +2,7 @@
 
 .menu-large {
     display: none;
+    
 }
 
 .menu {
@@ -21,7 +22,7 @@
     width: 270px;
     height: 45px;
     border-style: solid;
-    border: 1px solid rgb(229, 232, 235);
+    border: 2px solid rgb(229, 232, 235);
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -32,8 +33,9 @@
     width: 40px;
 }
 .search-icon {
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
+    margin-left:15px;
 }
 .search-input {
     width: 210px;
@@ -68,7 +70,7 @@
   }
   .menu-large {
     width: auto;
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -78,11 +80,13 @@
 
   .search-container {
     width: 100%;
-    margin-left: 10px;
+    margin-left: 250px;
+    margin-right: 140px;
   }
   .search-input {
     width: 100%;
     font-family: "Nunito Sans";
+    font-weight: bold;
   }
   .menu-item-container {
     width: 500px;
@@ -98,19 +102,24 @@
   }
   .menu-item {
     display: flex;
-    font-size: 15px;
+    font-size: 17px;
     flex-direction: column;
     justify-content: center;
     min-height: 60px;
     color: rgb(80, 80, 80);
     text-decoration: none;
+    
+  }
+  .menu-item:hover {
+    color:black;
+    cursor: pointer;
   }
   .menu-item.login {
     color: rgba(42, 14, 222, 0.906);
   }
   .menu-icon {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
  
 }
