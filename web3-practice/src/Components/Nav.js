@@ -1,18 +1,18 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Web3 from 'web3';
-import './Nav.css';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Web3 from "web3";
+import "./Nav.css";
 
-import { MdSearch, MdAccountCircle } from 'react-icons/md';
+import { MdSearch, MdAccountCircle } from "react-icons/md";
+import MintNft from "./MintNft";
 
 function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
-  console.log(login);
   const [web3, setWeb3] = useState();
-  const [account, setAccount] = useState('');
+  const [account, setAccount] = useState("");
 
   useEffect(() => {
-    if (typeof window.ethereum !== 'undefined') {
+    if (typeof window.ethereum !== "undefined") {
       // window.ethereum이 있다면
       try {
         const web = new Web3(window.ethereum); // 새로운 web3 객체를 만든다
@@ -34,7 +34,7 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
 
   const connectWallet = async () => {
     const accounts = await window.ethereum.request({
-      method: 'eth_requestAccounts',
+      method: "eth_requestAccounts",
     });
     setAccount(accounts[0]);
   };
@@ -48,17 +48,17 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
   return (
     <div>
       <div className="menu-large">
-        <div>         
-            <span>
-                <h2>
-                <Link to="/" className="title">
-                    <img
-                    src="https://storage.googleapis.com/opensea-static/Logomark/OpenSea-Full-Logo%20(dark).png"
-                    height="38"
-                    />
-                </Link>
-                </h2>
-            </span>       
+        <div>
+          <span>
+            <h2>
+              <Link to="/" className="title">
+                <img
+                  src="https://storage.googleapis.com/opensea-static/Logomark/OpenSea-Full-Logo%20(dark).png"
+                  height="38"
+                />
+              </Link>
+            </h2>
+          </span>
         </div>
         <div className="search-container">
           <div className="icon">
@@ -72,7 +72,7 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
 
         <div>
           <ul className="menu-item-container">
-          <li>
+            <li>
               <Link to="/explore" className="menu-item">
                 Explore
               </Link>
@@ -84,14 +84,20 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
             </li>
             <li>
               <Link to="/create" className="menu-item">
-                <div onClick={() => {
+                <div
+                  onClick={() => {
                     connectWallet();
-                  }}>Create
+                  }}
+                >
+                  Create
                 </div>
               </Link>
             </li>
             <li>
-              <Link to="/mypage" className={login ? 'menu-item login' : 'menu-item'}>            
+              <Link
+                to="/mypage"
+                className={login ? "menu-item login" : "menu-item"}
+              >
                 <MdAccountCircle
                   className="menu-icon"
                   onClick={() => {
@@ -100,9 +106,7 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
                 />
               </Link>
             </li>
-            <li>
-
-            </li>
+            <li></li>
             {/* <li>
               <Link to="/" className="menu-item">            
                 <div
@@ -114,7 +118,6 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
               </Link>             
             </li> */}
           </ul>
-
         </div>
       </div>
     </div>
