@@ -12,7 +12,8 @@ function BuyNFT({ web3, account, tokenId }) {
         const Ref = ref(db, `Dummy/Tokenlist/${tokenId}`);
         update(Ref,{
             ["price"] : Number(price),
-            ["sellBool"] : sellBool
+            ["sellBool"] : sellBool,
+            ["tokenOwner"] : account
         });
     }
 
@@ -38,11 +39,12 @@ function BuyNFT({ web3, account, tokenId }) {
             }
         });
 
-        let tokenName = "";
+        let tokenName = ""; let tokenURI = ""
         const TRef = ref(db, `Dummy/Tokenlist/${tokenId}`);
         onValue(TRef, (snapshot) => {
             if (snapshot.exists()) {
                 tokenName = snapshot.val()["tokenName"];
+                tokenURI = snapshot.val()["tokenURI"];
             } else {
                 console.log("No data available");
             }
@@ -54,8 +56,9 @@ function BuyNFT({ web3, account, tokenId }) {
             price: price,
             tokenId: tokenId,
             nftAddress: tokenAddr,
+            tokenName: tokenName,
             transferTime: time,
-            tokenName: tokenName
+            tokenURI: tokenURI
         })
     };
 
