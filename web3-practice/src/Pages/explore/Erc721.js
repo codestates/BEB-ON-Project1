@@ -19,9 +19,16 @@ const StyledLink = styled(Link)`
 `;
 const NameLeft = styled.div`
   color: black;
-  width: 70%;
+  width: 30%;
   float: left;
   font-weight:bold;
+`;
+const ButtonCenter = styled.div`
+  width: 30%;
+  float: left;
+  color: rgb(80, 80, 80);
+  text-align: center;
+  font-size: 20px;
 `;
 const PriceRight = styled.div`
   width: 30%;
@@ -44,15 +51,24 @@ const Erc721 = ({tokenURL, tokenName, price, link, isLoading }) => {
 
   return (
     <ItemList>
+      
       <Card sx={{ width: 322, margin: 3 }}>
+
         <StyledLink to={link}>
           {isLoading ? (
             <CardMedia component="img" height="322" image={LoadingImg} />
           ) : (
             <CardMedia component="img" height="322" image={tokenURL} />
           )}
+        </StyledLink>
+
           <CardContent height="200">
             {isLoading ? null : <NameLeft> {tokenName}</NameLeft>}
+
+            <ButtonCenter>
+              <button>BUY</button>
+            </ButtonCenter>
+
             <PriceRight>
               Price
               <PriceDiv>
@@ -61,8 +77,9 @@ const Erc721 = ({tokenURL, tokenName, price, link, isLoading }) => {
                 {isLoading ? null : price}
               </PriceDiv>
             </PriceRight>
+           
           </CardContent>
-        </StyledLink>
+        
       </Card>
     </ItemList>
   );
