@@ -1,5 +1,5 @@
-export const NFTitems = {
-    "items" : [
+const NFTitems = 
+[
         {
             "id": 1,
             "name": "Cat1",
@@ -41,5 +41,7 @@ export const NFTitems = {
             "name": "Puppy4",
             "image": "../images/puppy4.jpeg"
         },
-    ]
-}
+]
+
+
+export { NFTitems }
