@@ -3,6 +3,7 @@ import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
 import Explore from './Components/explore/Explore';
+import Activity from './Components/Activity';
 import Mypage from './Components/Mypage';
 import MintNft from "./Components/MintNft";
 import SellRegistration from './Components/SellRegistration';
@@ -43,11 +44,18 @@ function App() {
         />
         <Routes>
             <Route exact={true} path="/" 
-            element={<Home 
-            setmainaccount={setMainAccount}
-            setmainweb3={setMainweb3} />} />
-            <Route path="/explore" element={<Explore  />} />
-                      
+                element={<Home 
+                setmainaccount={setMainAccount}
+                setmainweb3={setMainweb3} />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/activity" element={<Activity />} />
+
+            {/* <Route path="/create" element={<Create  />} /> */}
+
+            <Route path="/mypage" 
+                element={<Mypage  
+                 />} /> 
+         
         </Routes>
         <div><Footer /></div>
        </BrowserRouter>

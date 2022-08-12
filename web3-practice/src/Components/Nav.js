@@ -123,7 +123,7 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
               </Link>
             </li>
             <li>
-              <Link to="/mypage" className="menu-item">
+              <Link to="/" className="menu-item">
                 <MdOutlineAccountBalanceWallet
                   className="menu-icon"
                   onClick={() => {

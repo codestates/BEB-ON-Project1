@@ -4,8 +4,8 @@ import {useState, useEffect} from 'react';
 import {getDatabase, ref, child, get} from "firebase/database";
 
 import styled from "styled-components";
-//import {Dimmer, Divider, Loader, Segment} from "semantic-ui-react";
-//import {Link} from "react-router-dom";
+// import {Dimmer, Divider, Loader, Segment} from "semantic-ui-react"; import
+// {Link} from "react-router-dom";
 
 const ViewItems = styled.div `
   margin-top: 3%;
@@ -60,8 +60,12 @@ function Explore() {
 
     return (
         <ViewItems>
+          <div className="board_title">
+              <h2>Explore</h2>
+          </div>
+
             <ItemCount>
-                {tokenList.length} 
+                {tokenList.length}
                 &nbsp;items</ItemCount>
             <ItemContainer>
                 {
@@ -71,18 +75,18 @@ function Explore() {
                         })
                         .map((token) => {
                             return (
-                              <Erc721 
-                                tokenId={token.tokenId} 
-                                tokenURL={token.tokenURL} 
-                                tokenName={token.tokenName} 
-                                key={token.tokenId} 
-                                tokenOwner={token.tokenOwner} 
-                                price={token.price}
-                                link={`/mypage/${token.tokenId}`}
-                                isLoading = {isLoading}
-                                onClick={handleClick} />
+                                <Erc721
+                                    tokenId={token.tokenId}
+                                    tokenURL={token.tokenURL}
+                                    tokenName={token.tokenName}
+                                    key={token.tokenId}
+                                    tokenOwner={token.tokenOwner}
+                                    price={token.price}
+                                    link={`/nftdetail/${token.tokenId}`}
+                                    isLoading={isLoading}
+                                    onClick={handleClick}/>
                             );
-                        })
+                        })                     
                 }
             </ItemContainer>
         </ViewItems>
