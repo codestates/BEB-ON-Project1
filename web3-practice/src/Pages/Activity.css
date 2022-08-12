@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul,
+  li {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .board_wrap {
+    width: 1650px;
+    margin: 50px auto;
+    /* 위 아래로 100px, 좌우는 자동(가운데 정렬)*/
+  }
+  
+  .board_title {
+    margin-bottom: 30px;
+  }
+  .board_title h2 {
+      text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2181E2;
+  }
+  .board_title p {
+    margin-top: 5px;
+    font-size: 1.2rem;
+  }
+  
+  .bt_wrap {
+    margin-top: 30px;
+    font-size: 0;
+    text-align: right;
+  }
+  
+  .bt_wrap a {
+    display: inline-block;
+    /* inline : 다른 요소들을 한 줄에 나오도록 */
+    /* block : 다른 요소들은 한 줄씩 차지 */
+    /* inline-block : 외부적으로는 inline, 내부적으로는 block / 
+      block 엘리먼트처럼 width와 height 속성 지정 및 margin과 padding 속성의 상하 간격 지정 가능*/
+    /* min-width: 50px; */
+    margin-left: 10px;
+    padding: 10px;
+    border: 2px solid #2181E2;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    /* 링크버튼 밑줄 없애기 */
+    color: #2181E2;
+    padding: 5px 50px;
+  }
+  
+  .bt_wrap a:first-child {
+    margin-left: 0;
+  }
+  
+  .bt_wrap a.on {
+    background: #2181E2;
+    color: white;
+    /* 글자 색깔 */
+  }
+  
+  .board_list {
+    width: 100%;
+    border-top: 2px solid #2181E2;
+  }
+  .board_list > div {
+    /* board_list의 첫번째 하위 태그(div)들 */
+    border-bottom: 1px solid grey;
+    font-size: 0;
+  }
+  .board_list > div.top {
+    border-bottom: 2px solid grey;
+  }
+  .board_list > div:last-child {
+    border-bottom: 2px solid #2181E2;
+  }
+  
+  .board_list > div > div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    text-align: center;
+    padding: 15px 0;
+  }
+  .board_list > div.top > div {
+    font-weight: 700;
+  }
+  
+  .board_list .num {
+    width: 10%;
+  }
+  .board_list .top .post_title {
+    text-align: center;
+  }
+  .board_list .post_title {
+    width: 20%;
+    text-align: left;
+    /* 제목은 왼쪽 */
+  }
+  .board_list .post_title span {
+    margin-left: 10px;
+  }
+  
+  .board_list .items {
+    width: 25%;
+    font-weight: bold;
+  }
+  .board_list .price {
+    width: 6%;
+     font-weight: bold;
+  }
+  .board_list .quantity {
+    width: 6%;
+  }
+  
+  .board_list .address {
+    width: 26%;
+  }
+
+  .board_list .date {
+    width: 10%;
+  }
+
+  
+  .board_page {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0;
+    /* 칸 들 사이에 여백 없애기 */
+  }
+  
+  .board_page a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #2181E2;
+    border-left: 0;
+    vertical-align: middle;
+  }
+  
+  .board_page a.bt {
+    font-size: 1rem;
+    padding-top: 2px;
+    text-decoration: none;
+  }
+  
+  .board_page a.num {
+    font-size: 1.1rem;
+    padding-top: 2px;
+    text-decoration: none;
+  }
+  
+  .board_page a:first-child {
+    border-left: 1px solid #2181E2;
+    /* 첫번째 버튼의 왼쪽선이 사라지므로 왼쪽선만 만들어준다. */
+  }
+  .board_page a.num.on {
+    background-color: #2181E2;
+    color: black;
+  }
+  
+  /* 게시물 보기 css */
+  .board_view {
+    width: 100%;
+    border-top: 2px solid #2181E2;
+  }
+  
+  .board_view .title {
+    padding: 15px;
+    border-bottom: 1px solid gray;
+    font-size: 1.2rem;
+    color: black;
+  }
+  
+  .board_view .info {
+    padding: 10px;
+    height: 45px;
+    border-bottom: 1px solid gray;
+    height: 25px;
+  }
+  
+  .board_view .info dl {
+    display: inline-block;
+    padding: 0 30px;
+  }
+  .board_view .info dl:first-child {
+    padding-left: 0;
+  }
+  
+  .board_view .info dl dt,
+  .board_view .info dl dd {
+    display: inline-block;
+  }
+  .board_view .info dl dd {
+    color: gray;
+    margin-left: 10px;
+  }
+  
+  .board_view .cont {
+    padding: 10px;
+    border-bottom: 2px solid #2181E2;
+    line-height: 160%;
+    /* 글 높이? 문단 간격? */
+    min-height: 150px;
+  }
+  
+  /* 게시물 쓰기 css */
+  .board_write {
+    width: 100%;
+    border-top: 2px solid #2181E2;
+  }
+  
+  .board_write .title {
+    display: inline-block;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
+  
+  .board_write .cont {
+    border-bottom: 2px solid #2181E2;
+  }
+  .board_write .cont textarea {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 0;
+    /* 테두리 선 없애기 */
+  }
+  
+  .board_write .title dt,
+  .board_write .title dd {
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 1.2rem;
+  }
+  .board_write .title dt {
+    margin-left: 0;
+    width: 100px;
+    text-align: center;
+    color: black;
+  }
+  .board_write .title dl {
+    margin-bottom: 0;
+    font-size: 0;
+  }
+  
+  .board_write .title dd {
+    width: 80%;
+  }
+  .board_write .title input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* 댓글 css */
+  .comment_wrap {
+    margin-top: 20px;
+  }
+  
+  .comment_input_btn {
+    height: 50px;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 2px solid #2181E2;
+    border-radius: 10px;
+    font-size: 1rem;
+    vertical-align: middle;
+    background-color: #2181E2;
+    color: #2181E2;
+    cursor: pointer;
+  }
+  
+  .comment_input textarea {
+    width: 85%;
+    vertical-align: middle;
+    text-indent: 5px;
+  }
+  
+  .comment_list {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-indent: 10px;
+    /* 들여쓰기 */
+  }
+  .comment div {
+    display: inline-block;
+    /* 댓글과 댓글작성자가 한 줄에 나오도록 */
+  }
+  .comment > div:last-child {
+    padding-left: 10px;
+    /* 작성자 이름 오른쪽으로 띄우기 */
+  }
+  .comment {
+    padding: 10px 0;
+    /* 댓글간에 위아래로 10px씩 띄우기 */
+    border-bottom: 1px dotted black;
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 1500px) {
+    .board_wrap {
+      width: 100%;
+      min-width: 320px;
+      padding: 0 30px;
+      box-sizing: border-box;
+    }
+  
+    .board_list .num,
+    .board_list .view {
+      display: none;
+    }
+  
+    .board_list .title {
+      text-indent: 10px;
+      /* 제목 들여쓰기 */
+    }
+    .board_list .top .title {
+      text-indent: 0;
+    }
+  }

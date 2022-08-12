@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Web3 from "web3";
 import "./Nav.css";
 
-import MintNft from "./MintNft";
+import MintNft from "../Pages/MintNft";
 import { MdSearch, MdAccountCircle, MdOutlineAccountBalanceWallet } from 'react-icons/md';
 
 function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
@@ -124,7 +124,7 @@ function Nav({ setmainaccount, setmainweb3, setislogin, login }) {
               </Link>
             </li>
             <li>
-              <Link to="/mypage" className="menu-item">
+              <Link to="/" className="menu-item">
                 <MdOutlineAccountBalanceWallet
                   className="menu-icon"
                   onClick={() => {
