@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
+import { useParams } from 'react-router-dom'
 //import SellRegistration from './SellRegistration';
-import { NFTitems } from './NFTList';
 import { getDatabase, ref, child, get } from "firebase/database";
 //import './NFTdetail.css';
 
-const NFTdetail = () => {
+const NFTdetail = ({tokenId}) => {
+    console.log({tokenId});
     const [isLoading, isSetLoading] = useState(true);
     const [tokenList, setTokenList] = useState([]);
 
@@ -17,6 +18,7 @@ const NFTdetail = () => {
                 if (snapshot.exists()) {
                     const jsonData = JSON.parse(JSON.stringify(snapshot.val()));
                     setTokenList(jsonData);
+                    console.log(jsonData);
                     isSetLoading(false);
                 } else {
                   console.log("No data available");
@@ -25,24 +27,26 @@ const NFTdetail = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, []);
+    }, [])
+    console.log(tokenList);
 
-    const filteredNFTitems = tokenList.orderByChild("Dummy/Tokenlist/tokenId").equalTo('0').once('value', function(data) {
-        console.log(data.const())
+    const findToken = tokenList.find( (e) => {
+        return e.tokenId === tokenId;
     })
+    console.log(findToken);
 
     return (
         <div id="nft-container">
             <div id="nftbody">
                 <div id="nft-title">
-                    NFTDetail
+                    NFTDetail 
                 </div>
                 <div id="nft-item" >
-                    <span className="item">
-                        <img className="item-image" src={filteredNFTitems[0].tokenURL} alt=""></img>
+                    <span>
+                        <img></img>
                     </span>
                     <span className="nft-info">
-                        <span className="item-name">{}</span>
+                        <span className="item-name"></span>
                     </span>
                 </div>
                 
