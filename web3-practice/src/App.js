@@ -1,4 +1,27 @@
 import './App.css';
+import React, {useState, useEffect} from 'react';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Mypage from './Components/Mypage';
+import NFTdetail from './Components/NFTdetail';
+//import { NFTitems } from './Components/NFTList';
+//import Nav from './Components/Nav';
+
+
+function App() {
+
+    
+    return (
+        <BrowserRouter>
+         <Routes>
+             <Route path="/" element={<Mypage />} />
+             <Route path="/nftdetail" element={<NFTdetail />} />
+         </Routes>
+        </BrowserRouter>
+    );
+}
+
+export default App;
+/*import './App.css';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
@@ -62,4 +85,4 @@ function App() {
     );
 }
 
-export default App;
+export default App;*/

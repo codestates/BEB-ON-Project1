@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Web3 from "web3";
 import "./Nav.css";
 
+import MintNft from "./MintNft";
 import { MdSearch, MdAccountCircle, MdOutlineAccountBalanceWallet } from 'react-icons/md';
 
 function Nav({ setmainaccount, setmainweb3, setislogin, login }) {

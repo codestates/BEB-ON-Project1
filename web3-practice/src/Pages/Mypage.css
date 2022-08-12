@@ -33,7 +33,7 @@
     position: absolute;
 }
 
-#mypage-collectednft-counter {
+#mypage-mycollection-counter {
     font-size: 0.9rem;
     font-weight: 700;
     color: white;
@@ -111,3 +111,15 @@
     margin-left: 1rem;
     font-weight: 400;
 }
+button {
+    background-color: #248ee4;
+    border: none;
+    border-radius: 1rem;
+    width: 170px;
+    padding: 0.3rem;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 0.4rem;
+    margin-left: 1.9rem;
+    cursor: pointer;
+  }
