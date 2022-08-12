@@ -7,6 +7,9 @@ import styled from "styled-components";
 import LoadingImg from "../../images/Loading_icon.gif";
 import EtherLogo from "../../images/Ethereum_logo.png";
 
+import BuyNFT from "../../Components/BuyNFT";
+/* import SellNFT from "../../Components/SellRegistration"; */
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   &:focus,
@@ -19,16 +22,17 @@ const StyledLink = styled(Link)`
 `;
 const NameLeft = styled.div`
   color: black;
-  width: 30%;
+  width: 10%;
   float: left;
   font-weight:bold;
 `;
 const ButtonCenter = styled.div`
-  width: 30%;
+  width: 25%;
   float: left;
   color: rgb(80, 80, 80);
-  text-align: center;
-  font-size: 20px;
+  font-size: 15px;
+  margin-top:35px;
+  position:relative;
 `;
 const PriceRight = styled.div`
   width: 30%;
@@ -47,7 +51,7 @@ const ItemList = styled.li`
   list-style: none;
 `;
 
-const Erc721 = ({tokenURL, tokenName, price, link, isLoading }) => {
+const Erc721 = ({web3, account, tokenId, tokenUri, tokenName, tokenOwner, price, link, isLoading, key }) => {
 
   return (
     <ItemList>
@@ -58,7 +62,7 @@ const Erc721 = ({tokenURL, tokenName, price, link, isLoading }) => {
           {isLoading ? (
             <CardMedia component="img" height="322" image={LoadingImg} />
           ) : (
-            <CardMedia component="img" height="322" image={tokenURL} />
+            <CardMedia component="img" height="322" image={tokenUri} />
           )}
         </StyledLink>
 
@@ -66,7 +70,14 @@ const Erc721 = ({tokenURL, tokenName, price, link, isLoading }) => {
             {isLoading ? null : <NameLeft> {tokenName}</NameLeft>}
 
             <ButtonCenter>
-              <button>BUY</button>
+              <BuyNFT web3={web3}
+                      account={account}
+                      tokenId={tokenId} ></BuyNFT>
+
+              {/* <SellNFT web3={web3}
+                      account={account}
+                      tokenId={tokenId} ></SellNFT> */}
+             
             </ButtonCenter>
 
             <PriceRight>

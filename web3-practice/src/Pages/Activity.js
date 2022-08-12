@@ -14,17 +14,19 @@ function Activity() {
 
         const dbRef = ref(getDatabase());
         // history 구매내역 데이터 전체를 가져온다.
-        get(child(dbRef, `Dummy/History/${tokenId}`))
+        get(child(dbRef, `Test/History/${tokenId}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
+
+                    const jsonData = snapshot.val();
+
                     let reversed = [];
                     // 최신 내역 순서대로 보여주기 위해 들어간 순서 반대로 베열에 다시 삽입
-                    snapshot.forEach(child => {
+                    jsonToArray(jsonData).forEach(child => {
                         reversed.unshift(child);
                     });
 
-                    const jsonData = JSON.parse(JSON.stringify(reversed));
-                    setHistory(jsonData);
+                    setHistory(reversed);
                     isSetLoading(false);
 
                     console.log(history);
@@ -36,6 +38,16 @@ function Activity() {
                 console.error(error);
             });
     }, []);
+
+    //json 다중 객체를 배열로 변환
+    function jsonToArray(json){
+        var result = [];
+        var keys = Object.keys(json);
+        keys.forEach(function(key){
+            result.push(json[key]);
+        });
+        return result;
+    }
 
     return (
         <div className="board_wrap">
