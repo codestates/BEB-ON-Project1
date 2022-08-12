@@ -10,12 +10,9 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.6.1",
-<<<<<<< HEAD
     "ipfs-http-client": "^57.0.3",
-=======
     "install": "^0.13.0",
     "npm": "^8.17.0",
->>>>>>> 2f825b76654ef1e1893d6b541c1630f006f73212
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
