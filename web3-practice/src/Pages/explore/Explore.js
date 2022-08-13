@@ -29,7 +29,8 @@ const ItemCount = styled.div `
   font-weight: bold;
 `;
 
-function Explore() {
+
+function Explore({ web3, account }) {
     const [isLoading, isSetLoading] = useState(true);
     const [tokenList, setTokenList] = useState([]);
 
@@ -37,12 +38,19 @@ function Explore() {
         const tokenId = '';
 
         const dbRef = ref(getDatabase());
-        get(child(dbRef, `Dummy/Tokenlist/${tokenId}`))
+        get(child(dbRef, `Test/TokenList/${tokenId}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
 
-                    const jsonData = JSON.parse(JSON.stringify(snapshot.val()));
-                    setTokenList(jsonData);
+                    const jsonData = snapshot.val();
+
+                    let fiteredArray = [];
+
+                    fiteredArray = jsonToArray(jsonData)
+                                   .filter(token => token.forSale === true)
+
+                    setTokenList(fiteredArray);
+                   //console.log(tokenList);
                     isSetLoading(false);
 
                 } else {
@@ -54,8 +62,14 @@ function Explore() {
             });
     }, []);
 
-    function handleClick(e) {
-        console.log(e.target);
+    //json 다중 객체를 배열로 변환
+    function jsonToArray(json){
+        var result = [];
+        var keys = Object.keys(json);
+        keys.forEach(function(key){
+            result.push(json[key]);
+        });
+        return result;
     }
 
     return (
@@ -69,22 +83,21 @@ function Explore() {
                 &nbsp;items</ItemCount>
             <ItemContainer>
                 {
-                    tokenList && tokenList
-                        .sort((a, b) => {
-                            return (b.price - a.price);
-                        })
+                    tokenList && tokenList                                  
                         .map((token) => {
                             return (
                                 <Erc721
+                                    web3 = {web3}
+                                    account = {account}
                                     tokenId={token.tokenId}
-                                    tokenURL={token.tokenURL}
-                                    tokenName={token.tokenName}
-                                    key={token.tokenId}
-                                    tokenOwner={token.tokenOwner}
+                                    tokenUri={token.tokenUri}
+                                    tokenName={token.tokenName}                                  
+                                    tokenOwner={token.Owner}
                                     price={token.price}
                                     link={`/nftdetail/${token.tokenId}`}
                                     isLoading={isLoading}
-                                    onClick={handleClick}/>
+                                    key={token.tokenId}
+                                     />
                             );
                         })                     
                 }

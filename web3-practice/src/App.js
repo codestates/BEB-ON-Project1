@@ -49,7 +49,10 @@ function App() {
                 element={<Home 
                 setmainaccount={setMainAccount}
                 setmainweb3={setMainweb3} />} />
-            <Route path="/explore" element={<Explore />} />
+            <Route path="/explore" 
+                element={<Explore 
+                web3={mainweb3}
+                account={mainAccount} />} />
             <Route path="/activity" element={<Activity />} />
 
             <Route path="/create" element={<MintNft  />} /> 
