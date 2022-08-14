@@ -1,23 +1,21 @@
-import './App.css';
-import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Mypage from './Components/Mypage';
-import NFTdetail from './Components/NFTdetail';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Mypage from "./Components/Mypage";
+import NFTdetail from "./Components/NFTdetail";
+import MintNft from "./Components/MintNft";
 //import { NFTitems } from './Components/NFTList';
 //import Nav from './Components/Nav';
 
-
 function App() {
-
-    
-    return (
-        <BrowserRouter>
-         <Routes>
-             <Route path="/" element={<Mypage />} />
-             <Route path="/nftdetail" element={<NFTdetail />} />
-         </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MintNft />} />
+        <Route path="/nftdetail" element={<NFTdetail />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
