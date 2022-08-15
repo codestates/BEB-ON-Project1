@@ -10,7 +10,7 @@
 }
   
 #mypagetitle {
-    margin-top: 0.5rem;
+    margin-left: 30rem;
     font-weight: 700;
     font-size: 1.5rem;
 }
@@ -26,63 +26,12 @@
     vertical-align: middle;
 }
   
-#mypagemenu {
-    margin: 1.5rem;
-    right: 0;
-    font-weight: 300;
-    position: absolute;
+
+#mypageproceedmanage {
+    margin-left: 10rem;
+    float: right;
 }
 
-#mypage-mycollection-counter {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: white;
-    background-color: #4000c7;
-    border-radius: 1rem;
-    margin-left: 0.3rem;
-    text-align: center;
-    vertical-align: text-top;
-    display: inline-block;
-    height: 1.2rem;
-    width: 1.2rem;
-    line-height: 1.2rem;
-}
-
-#mypage-creatednft-counter {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: white;
-    background-color: #4000c7;
-    border-radius: 1rem;
-    margin-left: 0.3rem;
-    text-align: center;
-    vertical-align: text-top;
-    display: inline-block;
-    height: 1.2rem;
-    width: 1.2rem;
-    line-height: 1.2rem;
-}
-
-#mypage-body {
-    background-color: #bc9eff0e;
-    padding: 5rem;
-    display: table-cell;
-    width: 100%;
-}
-  
-#mypage-container{
-    display: table;
-    margin: 0 auto;
-    width: 100%;
-    height: calc(100vh - 4rem);
-}
-  
-#mypage-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    padding-bottom: 1rem;
-    margin: 0.5rem;
-}
 
 .item {
     display: inline-block;
@@ -104,6 +53,45 @@
     margin: 0.5rem;
     border: 0.5px solid rgb(238, 238, 238);
     object-fit: cover;
+  }
+
+  .nft-image {
+    float: left;
+    vertical-align: top;
+    width: 400px;
+    height: 400px;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    border: 0.5px solid rgb(238, 238, 238);
+    object-fit: cover;
+  }
+
+  .nft-name {
+    float: left;
+    margin-left: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 3;
+    color: #000000;
+  }
+
+  .nft-owner {
+    color:#a8a8a8;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2;
+  }
+
+  .nft-price {
+    color:#0e0d0d;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2;
+  }
+
+  .nft-button {
+    line-height: 6;
   }
   
   .item-name {

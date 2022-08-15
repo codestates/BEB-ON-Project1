@@ -31,7 +31,7 @@ const ItemCount = styled.div `
 
 
 function Explore({ web3, account }) {
-    console.log(account);
+
     const [isLoading, isSetLoading] = useState(true);
     const [tokenList, setTokenList] = useState([]);
 
