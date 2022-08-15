@@ -1,85 +1,34 @@
 import React, {useState, useEffect} from "react";
-//import SellRegistration from './SellRegistration';
-import { getDatabase, ref, child, get } from "firebase/database";
+import SellRegistration from '../Components/SellRegistration';
+import BuyNFT from "../Components/BuyNFT";
+import { getDatabase, ref, child, get, onValue} from "firebase/database";
 import './NFTdetail.css';
-import { async } from "@firebase/util";
 
-const NFTdetail = () => {
-    const [isLoading, isSetLoading] = useState(true);
-    const [tokenList, setTokenList] = useState([]);
+const NFTdetail = ({account}) => {
+    const [tokenObj, setTokenObj] = useState({tokenURL : "", tokenName : "", tokenOwner : ""});
 
+    const tokenId =  window.location.href.slice(32);
 
     useEffect( ()=> {
-        const plzfast = () => {
-            const tokenId = '';
-
-            const dbRef =  ref(getDatabase());
-            get(child(dbRef, `Dummy/Tokenlist/${tokenId}`))
-                .then( (snapshot) => {
-                    if (snapshot.exists()) {
-                        const jsonData = snapshot.val();
-
-                        let findToken = window.location.href.slice(32);
-                        findToken = Number(findToken);
-
-                        let filteredArray = [];
-                        filteredArray = jsonToArray(jsonData)
-                                   .filter(token => token.tokenId === findToken)
-
-                        console.log(filteredArray[0])
-                        setTokenList(filteredArray);
-                        isSetLoading(false);
-                    } else {
-                        console.log("No data available");
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-    }
-        plzfast();
-    }, []);
-    /*
-    const [isLoading, isSetLoading] = useState(true);
-    const [tokenList, setTokenList] = useState([]);
-
-    useEffect( () => {
-            const tokenId = '';
-
-            const dbRef = ref(getDatabase());
-            get(child(dbRef, `Dummy/Tokenlist/${tokenId}`))
-                .then( (snapshot) => {
-                    if (snapshot.exists()) {
-                        const jsonData = snapshot.val();
-
-                        let findToken = window.location.href.slice(32);
-                        findToken = Number(findToken);
-
-                        let filteredArray = [];
-                        filteredArray = jsonToArray(jsonData)
-                                   .filter(token => token.tokenId === findToken)
-
-                        console.log(filteredArray[0])
-                        setTokenList(filteredArray);
-                        isSetLoading(false);
-                    } else {
-                        console.log("No data available");
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                });      
-    }, []);*/
-    function jsonToArray(json) {
-        var result = [];
-        var keys = Object.keys(json);
-        keys.forEach( function(key) {
-            result.push(json[key]);
+        const db = getDatabase();
+        const TRef = ref(db, 'Dummy/Tokenlist/'+tokenId);
+        onValue(TRef, (snapshot) => {
+            if (snapshot.exists()) {
+                setTokenObj(snapshot.val());
+            } else {
+                console.log("No data available");
+            }
         });
-        return result;
+    }, []);
+
+
+    // 내가 이 NFT 주인이면 판매등록 component가 보이고, 주인이 아니면 구매 component가 보임
+    const isMine = (address) => {
+        if (address.toUpperCase() == account.toUpperCase()){
+            return <SellRegistration />
+        }
+        else {return <BuyNFT />}
     }
-    
-    console.log(tokenList[0]); // 여기까지 받아와지는거 확인
 
     return (
         <div id="nft-container">
@@ -89,13 +38,15 @@ const NFTdetail = () => {
                 </div>
                 <div id="nft-item" >
                     <span>
-                        <img className="item-image" ></img>
+                        <img className="item-image" src={tokenObj.tokenURL} />
                     </span>
                     <span className="nft-info">
-                        <span className="item-name">{/*tokenList[0].tokenName*/}</span>
+                        <span className="item-name">{tokenObj.tokenName}</span>
+                        <div>Owned by {tokenObj.tokenOwner.length !=0 ? tokenObj.tokenOwner.slice(0,6) : ""}... </div>
+                        <div>Current price : {tokenObj.price} wei</div>
+                        {isMine(tokenObj.tokenOwner)}
                     </span>
                 </div>
-                
             </div>
         </div>
     )
