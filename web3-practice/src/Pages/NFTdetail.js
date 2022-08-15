@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import SellRegistration from '../Components/SellRegistration';
 import BuyNFT from "../Components/BuyNFT";
+import styled from "styled-components";
 import { getDatabase, ref, child, get, onValue} from "firebase/database";
 import './NFTdetail.css';
 
