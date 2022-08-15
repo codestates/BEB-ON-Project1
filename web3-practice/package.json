@@ -14,6 +14,7 @@
     "firebase": "^9.6.1",
     "install": "^0.13.0",
     "ipfs-http-client": "^57.0.3",
+    "nft.storage": "^7.0.0",
     "npm": "^8.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
