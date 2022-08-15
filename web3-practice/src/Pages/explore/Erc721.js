@@ -72,7 +72,7 @@ const Erc721 = ({web3, account, tokenId, tokenUri, tokenName, tokenOwner, price,
             <ButtonCenter>
               <BuyNFT web3={web3}
                       account={account}
-                      tokenId={tokenId} ></BuyNFT>
+                      tokenId={tokenId} />
 
               {/* <SellNFT web3={web3}
                       account={account}

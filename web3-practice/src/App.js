@@ -7,9 +7,9 @@ import NFTdetail from './Pages/NFTdetail';
 import Explore from './Pages/explore/Explore';
 import Activity from './Pages/Activity';
 import MintNft from "./Pages/MintNft";
-import SellRegistration from './Components/SellRegistration';
-import BuyNFT from './Components/BuyNFT';
-import ProceedManage from './Components/ProceedManage';
+// import SellRegistration from './Components/SellRegistration';
+// import BuyNFT from './Components/BuyNFT';
+// import ProceedManage from './Components/ProceedManage';
 
 import {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -18,7 +18,6 @@ function App() {
   const [mainweb3, setMainweb3] = useState("");
   const [mainAccount, setMainAccount] = useState("Address not yet");
   const [isLogin, setIsLogin] = useState(false);
-  const [tokenId, setTokenId] = useState();
 
   useEffect(() => {
     setMainAccount(mainAccount);
@@ -55,15 +54,15 @@ function App() {
                 account={mainAccount} />} />
             <Route path="/activity" element={<Activity />} />
 
-            <Route path="/create" element={<MintNft  />} /> 
+            <Route path="/create" element={<MintNft account={mainAccount} web3={mainweb3} />} /> 
 
             <Route path="/mypage" 
-                element={<Mypage account={mainAccount} />} /> 
-             <Route path="/nftdetail/:tokenId" element={<NFTdetail account={mainAccount} />} />
+                element={<Mypage account={mainAccount} web3={mainweb3} />} /> 
+             <Route path="/nftdetail/:tokenId" element={<NFTdetail web3={mainweb3} account={mainAccount} />} />
         </Routes>
         <div></div>
        </BrowserRouter>
-    );
+    ); 
 }
 
 export default App;

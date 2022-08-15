@@ -4,11 +4,12 @@ import { NFTStorage, File } from "nft.storage/dist/bundle.esm.min.js";
 import { getDatabase, ref, set } from "firebase/database";
 import Web3 from "web3";
 
-export default function MintNft() {
-  const web3 = new Web3(window.ethereum);
-  const account = "0x39a475635b9D73e7dD8336B035781d0C51Ec367a";
+export default function MintNft({account, web3}) {
+  // const web3 = new Web3(window.ethereum);
+  // const account = "0x39a475635b9D73e7dD8336B035781d0C51Ec367a";
   const tokenAddr = tokenAddress[0];
   let tokenUri;
+  let ImgURL = "";
 
   // const [tokenId, setTokenId] = useState();
   //const [tokenUri, setTokenUri] = useState("");
@@ -17,7 +18,7 @@ export default function MintNft() {
 
   const changeTokenName = (e) => {
     setTokenName(e.target.value);
-    console.log(tokenName);
+    // console.log(tokenName);
   };
 
   const retrieveFile = async (e) => {
@@ -43,17 +44,29 @@ export default function MintNft() {
       });
       console.log(metadata.url);
       tokenUri = metadata.url.slice(7);
+      // 사진이 바로 보이게 하기 위해 추가
+      ImgURL = await getImgURL();
+      ImgURL = "https://ipfs.io/ipfs" + ImgURL ;
     } catch (err) {
       console.error(err);
     }
   };
+
+  // 사진이 바로 보이게 하기 위해 추가
+  const getImgURL = () => {
+    return new Promise(function (receive){
+      fetch("https://ipfs.io/ipfs/"+tokenUri)
+      .then(response =>response.json())
+      .then(data => receive(data["image"].slice(6)));
+    });
+  }
 
   const dbUpload = (ti) => {
     try {
       const db = getDatabase();
       set(ref(db, `Test/Tokenlist/${ti}`), {
         tokenId: ti,
-        tokenURI: tokenUri,
+        tokenURI: ImgURL,
         tokenOwner: account,
         tokenName: tokenName,
         nftAddress: tokenAddr,

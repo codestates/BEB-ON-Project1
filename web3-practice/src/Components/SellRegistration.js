@@ -11,7 +11,7 @@ function SellRegistration({ web3, account, tokenId }) {
   const [price, setPrice] = useState(null);
 
   const editTokenList = (tokenId, price, sellBool) => {
-    const Ref = ref(db, `Dummy/Tokenlist/${tokenId}`);
+    const Ref = ref(db, `Test/Tokenlist/${tokenId}`);
     update(Ref, {
       ["price"]: Number(price),
       ["sellBool"]: sellBool,
