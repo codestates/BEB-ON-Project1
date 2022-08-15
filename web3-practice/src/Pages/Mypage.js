@@ -34,9 +34,11 @@ const MypageItem = styled.div `
   background-color: white;
 `
 
-const Mypage = () => {
+const Mypage = ({account}) => {
   const [isLoading, isSetLoading] = useState(true);
   const [tokenList, setTokenList] = useState([]);
+
+  if (account == "Address not yet" || null || undefined) {window.alert("로그인 하세요.")}
 
   useEffect(() => {
       const tokenId = '';
@@ -46,7 +48,10 @@ const Mypage = () => {
           .then((snapshot) => {
               if (snapshot.exists()) {
 
-                  const jsonData = JSON.parse(JSON.stringify(snapshot.val()));
+                  let jsonData = JSON.parse(JSON.stringify(snapshot.val()));
+                  jsonData = jsonData.filter((obj) => {
+                    if (obj.tokenOwner.toUpperCase() == account.toUpperCase()) return true
+                  });
                   setTokenList(jsonData);
                   isSetLoading(false);
 

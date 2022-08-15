@@ -58,9 +58,8 @@ function App() {
             <Route path="/create" element={<MintNft  />} /> 
 
             <Route path="/mypage" 
-                element={<Mypage  
-                 />} /> 
-             <Route path="/nftdetail/:tokenId" element={<NFTdetail />} />
+                element={<Mypage account={mainAccount} />} /> 
+             <Route path="/nftdetail/:tokenId" element={<NFTdetail account={mainAccount} />} />
         </Routes>
         <div></div>
        </BrowserRouter>
