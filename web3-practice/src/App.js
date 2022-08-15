@@ -2,9 +2,14 @@ import './App.css';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
-import Explore from './Components/explore/Explore';
-import Mypage from './Components/Mypage';
-import NFTdetail from './Components/NFTdetail';
+import Mypage from './Pages/Mypage';
+import NFTdetail from './Pages/NFTdetail';
+import Explore from './Pages/explore/Explore';
+import Activity from './Pages/Activity';
+import MintNft from "./Pages/MintNft";
+import SellRegistration from './Components/SellRegistration';
+import BuyNFT from './Components/BuyNFT';
+import ProceedManage from './Components/ProceedManage';
 
 import {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -41,18 +46,21 @@ function App() {
         />
         <Routes>
             <Route exact={true} path="/" 
-            element={<Home 
-            setmainaccount={setMainAccount}
-            setmainweb3={setMainweb3} />} />
-            <Route path="/explore" element={<Explore  />} />
-            <Route path="/mypage" element={<Mypage 
-            setmainaccount={setMainAccount}
-            setmainweb3={setMainweb3}
-            setTokenId={setTokenId}
-            tokenId={tokenId} />} />
-            <Route path="/NFTdetail/:tokenId" element={<NFTdetail 
-            setTokenId={setTokenId}
-            tokenId={tokenId} />} />
+                element={<Home 
+                setmainaccount={setMainAccount}
+                setmainweb3={setMainweb3} />} />
+            <Route path="/explore" 
+                element={<Explore 
+                web3={mainweb3}
+                account={mainAccount} />} />
+            <Route path="/activity" element={<Activity />} />
+
+            <Route path="/create" element={<MintNft  />} /> 
+
+            <Route path="/mypage" 
+                element={<Mypage  
+                 />} /> 
+             <Route path="/nftdetail/:tokenId" element={<NFTdetail />} />
         </Routes>
         <div></div>
        </BrowserRouter>
@@ -60,27 +68,3 @@ function App() {
 }
 
 export default App;
-
-/*import './App.css';
-import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Mypage from './Components/Mypage';
-import NFTdetail from './Components/NFTdetail';
-//import { NFTitems } from './Components/NFTList';
-//import Nav from './Components/Nav';
-
-
-function App() {
-
-    
-    return (
-        <BrowserRouter>
-         <Routes>
-             <Route path="/" element={<Mypage />} />
-             <Route path="/nftdetail" element={<NFTdetail />} />
-         </Routes>
-        </BrowserRouter>
-    );
-}
-
-export default App;*/

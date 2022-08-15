@@ -58,6 +58,8 @@ const Mypage = () => {
               console.error(error);
           });
   }, []);
+  console.log(tokenList);
+
   function handleClick(e) {
       console.log(e.target);
   } 
@@ -91,7 +93,7 @@ const Mypage = () => {
                                 onClick={handleClick} />
                             );
                         })
-                     }
+                    }
                   </span>
               </MypageBody>
         </MypageContainer>
