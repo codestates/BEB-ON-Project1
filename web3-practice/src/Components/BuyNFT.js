@@ -2,6 +2,7 @@ import { getDatabase, ref, child, update, set, onValue, get} from "firebase/data
 import { marketplaceAbi, marketplaceAddress, tokenAddress} from "../constants";
 
 function BuyNFT({ web3, account, tokenId }) {
+    console.log(account);
     const marketAddr = marketplaceAddress[0];
     const tokenAddr = tokenAddress[0];
 
@@ -9,7 +10,7 @@ function BuyNFT({ web3, account, tokenId }) {
     let historyIdx = 0;         // buyItem이 발생시 +1 증가해 History list를 indexing할 값
 
     const editTokenList = (tokenId, price, sellBool) => {
-        const Ref = ref(db, `Dummy/Tokenlist/${tokenId}`);
+        const Ref = ref(db, `Test/Tokenlist/${tokenId}`);
         update(Ref,{
             ["price"] : Number(price),
             ["sellBool"] : sellBool,
@@ -29,7 +30,7 @@ function BuyNFT({ web3, account, tokenId }) {
         let time = year + '/' + month + '/' + date + "_" + hours + ':' + minutes + ':' + seconds;
 
         // 현재 history list로 접근하여 마지막으로 기록된 idx가 몇인지 가져옴.
-        const HRef = ref(db, 'Dummy/History');
+        const HRef = ref(db, 'Test/History');
         onValue(HRef, (snapshot) => {
             if (snapshot.exists()) {
                 historyIdx = snapshot.val().length;
@@ -40,7 +41,7 @@ function BuyNFT({ web3, account, tokenId }) {
         });
 
         let tokenName = ""; let tokenURI = ""
-        const TRef = ref(db, `Dummy/Tokenlist/${tokenId}`);
+        const TRef = ref(db, `Test/Tokenlist/${tokenId}`);
         onValue(TRef, (snapshot) => {
             if (snapshot.exists()) {
                 tokenName = snapshot.val()["tokenName"];
@@ -50,7 +51,7 @@ function BuyNFT({ web3, account, tokenId }) {
             }
         });
 
-        set(ref(db, "Dummy/History/" + `${historyIdx}`), {
+        set(ref(db, "Test/History/" + `${historyIdx}`), {
             seller: seller,
             buyer: buyer,
             price: price,
@@ -65,7 +66,7 @@ function BuyNFT({ web3, account, tokenId }) {
     // 가격과 seller는 db에서 가져오지 않고 마켓플레이스 컨트랙트의 getListingInfo에서 가져옴
     const buyItem = async (tokenAddr, tokenId) => {
         try {
-            const marketContract = new web3.eth.Contract(marketplaceAbi, marketAddr,{ from: account, to:marketAddr,  gasLimit: 3000000});
+            const marketContract = new web3.eth.Contract(marketplaceAbi, marketAddr,{ from: account, to: marketAddr,  gasLimit: 3000000});
             const getListingInfo = await marketContract.methods.getListing(tokenAddr, tokenId).call();
             const price = Number(getListingInfo[0]);
             const seller = getListingInfo[1];

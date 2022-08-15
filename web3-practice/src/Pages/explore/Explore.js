@@ -31,6 +31,7 @@ const ItemCount = styled.div `
 
 
 function Explore({ web3, account }) {
+    console.log(account);
     const [isLoading, isSetLoading] = useState(true);
     const [tokenList, setTokenList] = useState([]);
 
@@ -38,19 +39,19 @@ function Explore({ web3, account }) {
         const tokenId = '';
 
         const dbRef = ref(getDatabase());
-        get(child(dbRef, `Test/TokenList/${tokenId}`))
+        get(child(dbRef, `Test/Tokenlist/${tokenId}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
 
                     const jsonData = snapshot.val();
-
+  
                     let fiteredArray = [];
 
                     fiteredArray = jsonToArray(jsonData)
-                                   .filter(token => token.forSale === true)
+                                   .filter(token => token.sellBool === true)
 
                     setTokenList(fiteredArray);
-                   //console.log(tokenList);
+                    // console.log(tokenList);
                     isSetLoading(false);
 
                 } else {
@@ -90,9 +91,9 @@ function Explore({ web3, account }) {
                                     web3 = {web3}
                                     account = {account}
                                     tokenId={token.tokenId}
-                                    tokenUri={token.tokenUri}
+                                    tokenUri={token.tokenURI}
                                     tokenName={token.tokenName}                                  
-                                    tokenOwner={token.Owner}
+                                    tokenOwner={token.tokenOwner}
                                     price={token.price}
                                     link={`/nftdetail/${token.tokenId}`}
                                     isLoading={isLoading}

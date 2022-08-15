@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Mycollection from './Mycollection';
 import { Routes, Route } from "react-router-dom";
+import ProceedManage from '../Components/ProceedManage';
 import { getDatabase, ref, child, get } from "firebase/database";
 import styled from "styled-components";
 import './Mypage.css';
@@ -34,7 +35,7 @@ const MypageItem = styled.div `
   background-color: white;
 `
 
-const Mypage = ({account}) => {
+const Mypage = ({account, web3}) => {
   const [isLoading, isSetLoading] = useState(true);
   const [tokenList, setTokenList] = useState([]);
 
@@ -44,15 +45,15 @@ const Mypage = ({account}) => {
       const tokenId = '';
 
       const dbRef = ref(getDatabase());
-      get(child(dbRef, `Dummy/Tokenlist/${tokenId}`))
+      get(child(dbRef, `Test/Tokenlist/${tokenId}`))
           .then((snapshot) => {
               if (snapshot.exists()) {
 
                   let jsonData = JSON.parse(JSON.stringify(snapshot.val()));
-                  jsonData = jsonData.filter((obj) => {
-                    if (obj.tokenOwner.toUpperCase() == account.toUpperCase()) return true
-                  });
-                  setTokenList(jsonData);
+                  const fiteredArray = jsonToArray(jsonData)
+                  .filter(token => token.tokenOwner.toUpperCase() == account.toUpperCase())
+
+                  setTokenList(fiteredArray);
                   isSetLoading(false);
 
               } else {
@@ -63,23 +64,34 @@ const Mypage = ({account}) => {
               console.error(error);
           });
   }, []);
-  console.log(tokenList);
+  // console.log(tokenList);
+
+  //json 다중 객체를 배열로 변환
+  function jsonToArray(json){
+    var result = [];
+    var keys = Object.keys(json);
+    keys.forEach(function(key){
+        result.push(json[key]);
+    });
+    return result;
+  }
+
 
   function handleClick(e) {
       console.log(e.target);
   } 
   return (
     <div id="mypage-nav">
-        <span id="mypagetitle">
+        <div id="mypagetitle">
           <img id="mypagelogo" src="../mypagelogo.png" />
           <span id="mypagename">Mypage</span>
-        </span>
-        <MypageContainer>
+          <span><ProceedManage web3={web3} account={account} /></span>
+        </div>
             <MypageBody>
-              <MypageTitle>
-                MyCollectionList
-              </MypageTitle>
-                  <span>
+             <MypageContainer>
+                <MypageTitle>
+                  MyCollectionList
+                </MypageTitle>
                     {tokenList && tokenList
                         .sort((a, b) => {
                             return (b.price - a.price);
@@ -88,7 +100,7 @@ const Mypage = ({account}) => {
                             return (
                               <Mycollection
                                 tokenId={token.tokenId} 
-                                tokenURL={token.tokenURL} 
+                                tokenURL={token.tokenURI} 
                                 tokenName={token.tokenName} 
                                 key={token.tokenId} 
                                 price={token.price}
@@ -99,9 +111,8 @@ const Mypage = ({account}) => {
                             );
                         })
                     }
-                  </span>
+               </MypageContainer>
               </MypageBody>
-        </MypageContainer>
         
     </div>
   )
