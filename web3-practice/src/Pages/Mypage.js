@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Mycollection from './Mycollection';
 import { Routes, Route } from "react-router-dom";
+import ProceedManage from '../Components/ProceedManage';
 import { getDatabase, ref, child, get } from "firebase/database";
 import styled from "styled-components";
 import './Mypage.css';
@@ -49,9 +50,10 @@ const Mypage = ({account}) => {
               if (snapshot.exists()) {
 
                   let jsonData = JSON.parse(JSON.stringify(snapshot.val()));
-                  jsonData = jsonData.filter((obj) => {
+                  // CSS 테스트로 인해 잠시 주석처리
+                  /*jsonData = jsonData.filter((obj) => {
                     if (obj.tokenOwner.toUpperCase() == account.toUpperCase()) return true
-                  });
+                  });*/
                   setTokenList(jsonData);
                   isSetLoading(false);
 
@@ -70,16 +72,16 @@ const Mypage = ({account}) => {
   } 
   return (
     <div id="mypage-nav">
-        <span id="mypagetitle">
+        <div id="mypagetitle">
           <img id="mypagelogo" src="../mypagelogo.png" />
           <span id="mypagename">Mypage</span>
-        </span>
-        <MypageContainer>
+          <span><ProceedManage /></span>
+        </div>
             <MypageBody>
-              <MypageTitle>
-                MyCollectionList
-              </MypageTitle>
-                  <span>
+             <MypageContainer>
+                <MypageTitle>
+                  MyCollectionList
+                </MypageTitle>
                     {tokenList && tokenList
                         .sort((a, b) => {
                             return (b.price - a.price);
@@ -99,9 +101,8 @@ const Mypage = ({account}) => {
                             );
                         })
                     }
-                  </span>
+               </MypageContainer>
               </MypageBody>
-        </MypageContainer>
         
     </div>
   )

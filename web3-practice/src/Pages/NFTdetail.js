@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
 import SellRegistration from '../Components/SellRegistration';
 import BuyNFT from "../Components/BuyNFT";
+import styled from "styled-components";
 import { getDatabase, ref, child, get, onValue} from "firebase/database";
 import './NFTdetail.css';
+
 
 const NFTdetail = ({account}) => {
     const [tokenObj, setTokenObj] = useState({tokenURL : "", tokenName : "", tokenOwner : ""});
@@ -31,21 +33,23 @@ const NFTdetail = ({account}) => {
     }
 
     return (
-        <div id="nft-container">
-            <div id="nftbody">
-                <div id="nft-title">
-                    NFTDetail 
-                </div>
-                <div id="nft-item" >
-                    <span>
-                        <img className="item-image" src={tokenObj.tokenURL} />
-                    </span>
-                    <span className="nft-info">
-                        <span className="item-name">{tokenObj.tokenName}</span>
-                        <div>Owned by {tokenObj.tokenOwner.length !=0 ? tokenObj.tokenOwner.slice(0,6) : ""}... </div>
-                        <div>Current price : {tokenObj.price} wei</div>
-                        {isMine(tokenObj.tokenOwner)}
-                    </span>
+        <div>
+            <div id="nft-title">
+                NFTDetail 
+            </div>
+            <div id="nftlist">
+                <img className="nft-image" src={tokenObj.tokenURL} />
+                <span className="nft-name">
+                    {tokenObj.tokenName}
+                 </span>
+                <div className="nft-info">
+                    <div className="nft-owner">Owned by {tokenObj.tokenOwner.length !=0 ? tokenObj.tokenOwner.slice(0,6) : ""}... </div>
+                    <div className="nft-price">
+                        Current price :
+                        <img className="price-logo" src="../Ethereum_logo.png" />
+                        {tokenObj.price} wei
+                    </div>
+                    <div className="nft-button">{isMine(tokenObj.tokenOwner)}</div>
                 </div>
             </div>
         </div>
