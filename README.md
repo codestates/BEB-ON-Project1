@@ -18,18 +18,18 @@
 
 1. Built with
     - Front-end
-        
-        ![image]({https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB}) SPA 구현을 위한 라이브러리!
+    
+        <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> SPA 구현을 위한 라이브러리!
         
         NFT.Storage: NFT의 metadata를 IPFS에 배포합니다!
         
     - Back-end
         
-        HARDHAT: 스마트 컨트랙트 개발, 테스트 그리고 배포. 튼튼딴딴한 컨트랙트를 위하여!
+        HARDHAT👷‍♂️: 스마트 컨트랙트 개발, 테스트 그리고 배포. 튼튼딴딴한 컨트랙트를 위하여!
         
     - Database
         
-        FIREBASE-Realtime Database:  Serverless Database! 개발의 난이도를 낮추어 시간을 절약하게 해줍니다!
+        <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />  Serverless Database! 개발의 난이도를 낮추어 시간을 절약하게 해줍니다!
         
 
 ---
