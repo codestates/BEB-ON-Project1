@@ -19,7 +19,7 @@
 1. Built with
     - Front-end
         
-        REACT: SPA 구현을 위한 라이브러리!
+        ![image]({https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB}) SPA 구현을 위한 라이브러리!
         
         NFT.Storage: NFT의 metadata를 IPFS에 배포합니다!
         
