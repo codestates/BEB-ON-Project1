@@ -164,8 +164,7 @@ const marketAddr = marketplaceAddress[4];
 
 # Authors
 
-- 김다한 - [https://github.com/Dahankim89](https://github.com/Dahankim89)
-    
+### 김다한 - [https://github.com/Dahankim89](https://github.com/Dahankim89)
 * Position: Front-End
 * Stack : NODE js, React-Native, React-Hooks, React-Navigation, React-Native-Element, Firebase-DB
 * Contribution :
@@ -176,16 +175,14 @@ const marketAddr = marketplaceAddress[4];
   * Explore 기능 구현
   * Activity 페이지 구현
     
-- 김도영 - [https://github.com/bcdy19](https://github.com/bcdy19)
-    
+### 김도영 - [https://github.com/bcdy19](https://github.com/bcdy19)
 * Position: Front-End
 * Stack : NODE js, React-Native, React-Hooks, React-Navigation, React-Native-Element, Firebase-DB
 * Contribution :
   * Mypage 페이지 구현
   * NFT detail 페이지 구현
     
-- 오정헌 - [https://github.com/JSND-OJ00](https://github.com/JSND-OJ00)
-    
+### 오정헌 - [https://github.com/JSND-OJ00](https://github.com/JSND-OJ00)
 * Position: Front-End, Smart-Contract, Back-End
 * Stack : NODE js, React-Hooks, React-Native-Element, Firebase-DB, HardHat
 * Contribution :
@@ -193,8 +190,7 @@ const marketAddr = marketplaceAddress[4];
   * marcket place Contract 구현
   * Create 페이지 구현 (파일 업로드시 IPFS를 사용한 메타데이터 생성, 민팅 기능)
 
-- 오하영 - [https://github.com/Hayoung5](https://github.com/Hayoung5)
-    
+### 오하영 - [https://github.com/Hayoung5](https://github.com/Hayoung5) 
 * Position: Front-End, Smart-Contract
 * Stack : NODE js, React-Hooks, React-Native-Element, Firebase-DB
 * Contribution :
