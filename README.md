@@ -13,7 +13,7 @@
     이 프로젝트는 오픈씨 클론코딩입니다!
     
 
-    백엔드에서 ERC721 기반 토큰 컨트랙트와marketplace 컨트랙트를 배포합니다.  Marketplace 컨트랙트는 토큰의 판매권한을 부여 받아 토큰의 판매및       관리를 담당하며, 판매자의 수익(proceeds)또한 관리합니다. 배포와 동시에 프론트엔드에 ABI와 컨트랙트 주소를 전송하여 web3.js등을 활용한 컨트랙트와     의 소통을 지원합니다.
+    백엔드에서 ERC721 기반 토큰 컨트랙트와 marketplace 컨트랙트를 배포합니다.  Marketplace 컨트랙트는 토큰의 판매권한을 부여 받아 토큰의 판매 및       관리를 담당하며, 판매자의 수익(proceeds)또한 관리합니다. 배포와 동시에 프론트엔드에 ABI와 컨트랙트 주소를 전송하여 web3.js등을 활용한 컨트랙트와     의 소통을 지원합니다.
 
     프론트엔드는 토큰 발행, 판매등록, 판매, 구매 , 거래내역 조회 등 기본적인 NFT Marketplace의 기능을 지원합니다. 사용자는 Metamask를 통하여 블   록체인과 소통합니다.
 
@@ -166,27 +166,44 @@ const marketAddr = marketplaceAddress[4];
 
 - 김다한 - [https://github.com/Dahankim89](https://github.com/Dahankim89)
     
-    프론트엔드:
+* Position: Front-End
+* Stack : NODE js, React-Native, React-Hooks, React-Navigation, React-Native-Element, Firebase-DB
+* Contribution :
+  * Home 페이지 구현 (로그인)
+  * 메타마스크 지갑 연결 기능 구현
+  * Nav 구현
+  * Footer 구현
+  * Explore 기능 구현
+  * Activity 페이지 구현
     
-    백엔드:
+- 김도영 - [https://github.com/bcdy19](https://github.com/bcdy19)
     
-- 긴도현 - [https://github.com/bcdy19](https://github.com/bcdy19)
-    
-    프론트엔드:
-    
-    백엔드:
+* Position: Front-End
+* Stack : NODE js, React-Native, React-Hooks, React-Navigation, React-Native-Element, Firebase-DB
+* Contribution :
+  * Mypage 페이지 구현
+  * NFT detail 페이지 구현
     
 - 오정헌 - [https://github.com/JSND-OJ00](https://github.com/JSND-OJ00)
     
-    프론트엔드:
-    
-    백엔드:
+* Position: Front-End, Smart-Contract, Back-End
+* Stack : NODE js, React-Hooks, React-Native-Element, Firebase-DB, HardHat
+* Contribution :
+  * Hardhat contract deploy 구현
+  * marcket place Contract 구현
+  * Create 페이지 구현 (파일 업로드시 IPFS를 사용한 메타데이터 생성, 민팅 기능)
 
 - 오하영 - [https://github.com/Hayoung5](https://github.com/Hayoung5)
     
-    프론트엔드:
-    
-    백엔드:
+* Position: Front-End, Smart-Contract
+* Stack : NODE js, React-Hooks, React-Native-Element, Firebase-DB
+* Contribution :
+  * SellRegistration 기능 구현
+  * BuyNFT 기능 구현
+  * ProceedManage 기능 구현
+  * Firebase db 생성, 연동
+  * 깃허브 관리, 통합
+  
 ---
 
 # License
