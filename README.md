@@ -166,7 +166,7 @@ const marketAddr = marketplaceAddress[4];
 
 ### 김다한 - [https://github.com/Dahankim89](https://github.com/Dahankim89)
 * Position: Front-End
-* Stack : NODE js, React-Native, React-Hooks, React-Navigation, React-Native-Element, Firebase-DB
+* Stack : NODE js, React, React-Hooks, React-Navigation, Firebase-DB
 * Contribution :
   * Home 페이지 구현 (로그인)
   * 메타마스크 지갑 연결 기능 구현
@@ -177,14 +177,14 @@ const marketAddr = marketplaceAddress[4];
     
 ### 김도영 - [https://github.com/bcdy19](https://github.com/bcdy19)
 * Position: Front-End
-* Stack : NODE js, React-Native, React-Hooks, React-Navigation, React-Native-Element, Firebase-DB
+* Stack : NODE js, React, React-Hooks, React-Navigation, Firebase-DB
 * Contribution :
   * Mypage 페이지 구현
   * NFT detail 페이지 구현
     
 ### 오정헌 - [https://github.com/JSND-OJ00](https://github.com/JSND-OJ00)
 * Position: Front-End, Smart-Contract, Back-End
-* Stack : NODE js, React-Hooks, React-Native-Element, Firebase-DB, HardHat
+* Stack : NODE js, React-Hooks, React, Firebase-DB, HardHat
 * Contribution :
   * Hardhat contract deploy 구현
   * marcket place Contract 구현
@@ -192,7 +192,7 @@ const marketAddr = marketplaceAddress[4];
 
 ### 오하영 - [https://github.com/Hayoung5](https://github.com/Hayoung5) 
 * Position: Front-End, Smart-Contract
-* Stack : NODE js, React-Hooks, React-Native-Element, Firebase-DB
+* Stack : NODE js, React-Hooks, React, Firebase-DB
 * Contribution :
   * SellRegistration 기능 구현
   * BuyNFT 기능 구현
