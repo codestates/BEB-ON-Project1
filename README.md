@@ -166,7 +166,7 @@ const marketAddr = marketplaceAddress[4];
 
 ### 김다한 - [https://github.com/Dahankim89](https://github.com/Dahankim89)
 * Position: Front-End
-* Stack : NODE js, React, React-Hooks, React-Navigation, Firebase-DB
+* Stack : NODE js, React, React-Hooks, Firebase-DB
 * Contribution :
   * Home 페이지 구현 (로그인)
   * 메타마스크 지갑 연결 기능 구현
@@ -177,7 +177,7 @@ const marketAddr = marketplaceAddress[4];
     
 ### 김도영 - [https://github.com/bcdy19](https://github.com/bcdy19)
 * Position: Front-End
-* Stack : NODE js, React, React-Hooks, React-Navigation, Firebase-DB
+* Stack : NODE js, React, React-Hooks,Firebase-DB
 * Contribution :
   * Mypage 페이지 구현
   * NFT detail 페이지 구현
